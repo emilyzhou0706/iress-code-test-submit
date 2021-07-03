@@ -15,19 +15,19 @@ public class Robot {
     private int y;
     private Face face;
 
-    public void turnLeft(){
-        switch(this.face) {
+    public void turnLeft() {
+        switch (this.face) {
             case NORTH:
-                this.face=Face.WEST;
+                this.face = Face.WEST;
                 break;
             case EAST:
-                this.face=Face.NORTH;
+                this.face = Face.NORTH;
                 break;
             case SOUTH:
-                this.face=Face.EAST;
+                this.face = Face.EAST;
                 break;
             case WEST:
-                this.face=Face.SOUTH;
+                this.face = Face.SOUTH;
                 break;
             default:
                 break;
@@ -53,30 +53,30 @@ public class Robot {
         }
     }
 
-    public void move(){
-        boolean validMovRes=false;
+    public void move() {
+        boolean validMovRes = false;
         switch (this.face) {
             case NORTH:
-                validMovRes=checkValid(x,y+1);
-                if(validMovRes){
+                validMovRes = checkValid(x, y + 1);
+                if (validMovRes) {
                     this.y++;
                 }
                 break;
             case EAST:
-                validMovRes=checkValid(x+1,y);
-                if(validMovRes){
+                validMovRes = checkValid(x + 1, y);
+                if (validMovRes) {
                     this.x++;
                 }
                 break;
             case SOUTH:
-                validMovRes=checkValid(x,y-1);
-                if(validMovRes) {
+                validMovRes = checkValid(x, y - 1);
+                if (validMovRes) {
                     this.y--;
                 }
                 break;
             case WEST:
-                validMovRes=checkValid(x-1,y);
-                if(validMovRes) {
+                validMovRes = checkValid(x - 1, y);
+                if (validMovRes) {
                     this.x--;
                 }
                 break;
@@ -85,20 +85,19 @@ public class Robot {
         }
     }
 
-    public Robot place(int x,int y,Face face){
-        if(checkValid(x,y)){
-            return new Robot(x,y,face);
-        }else{
+    public Robot place(int x, int y, Face face) {
+        if (checkValid(x, y)) {
+            return new Robot(x, y, face);
+        } else {
             return this;
         }
     }
 
-    public boolean checkValid(int x,int y){
-        if(x<0||x>5||y<0||y>5){
+    public boolean checkValid(int x, int y) {
+        if (x < 0 || x > 5 || y < 0 || y > 5) {
             System.out.println("invalid move, please place another valid command");
             return false;
-        }
-        else{
+        } else {
             return true;
         }
     }
