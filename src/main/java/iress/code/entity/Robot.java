@@ -1,5 +1,6 @@
-package iress.com.code.test;
+package main.java.iress.code.entity;
 
+import main.java.iress.code.constant.Face;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,22 +13,21 @@ import lombok.Setter;
 public class Robot {
     private int x;
     private int y;
-    private String face;
+    private Face face;
 
     public void turnLeft(){
         switch(this.face) {
-            case "NORTH":
-                this.face="WEST";
+            case NORTH:
+                this.face=Face.WEST;
                 break;
-            case "EAST":
-                this.face="NORTH";
+            case EAST:
+                this.face=Face.NORTH;
                 break;
-            case "SOUTH":
-                // code block
-                this.face="EAST";
+            case SOUTH:
+                this.face=Face.EAST;
                 break;
-            case "WEST":
-                this.face="SOUTH";
+            case WEST:
+                this.face=Face.SOUTH;
                 break;
             default:
                 break;
@@ -36,17 +36,17 @@ public class Robot {
 
     public void turnRight() {
         switch (this.face) {
-            case "NORTH":
-                this.face = "EAST";
+            case NORTH:
+                this.face = Face.EAST;
                 break;
-            case "EAST":
-                this.face = "SOUTH";
+            case EAST:
+                this.face = Face.SOUTH;
                 break;
-            case "SOUTH":
-                this.face = "WEST";
+            case SOUTH:
+                this.face = Face.WEST;
                 break;
-            case "WEST":
-                this.face = "NORTH";
+            case WEST:
+                this.face = Face.NORTH;
                 break;
             default:
                 break;
@@ -56,25 +56,25 @@ public class Robot {
     public void move(){
         boolean validMovRes=false;
         switch (this.face) {
-            case "NORTH":
+            case NORTH:
                 validMovRes=checkValid(x,y+1);
                 if(validMovRes){
                     this.y++;
                 }
                 break;
-            case "EAST":
+            case EAST:
                 validMovRes=checkValid(x+1,y);
                 if(validMovRes){
                     this.x++;
                 }
                 break;
-            case "SOUTH":
+            case SOUTH:
                 validMovRes=checkValid(x,y-1);
                 if(validMovRes) {
                     this.y--;
                 }
                 break;
-            case "WEST":
+            case WEST:
                 validMovRes=checkValid(x-1,y);
                 if(validMovRes) {
                     this.x--;
@@ -85,7 +85,7 @@ public class Robot {
         }
     }
 
-    public Robot place(int x,int y,String face){
+    public Robot place(int x,int y,Face face){
         if(checkValid(x,y)){
             return new Robot(x,y,face);
         }else{
